@@ -19,7 +19,6 @@ def decode_int(seq, p):
     while seq[p] != 'e':
         part += seq[p]
         p += 1
-
     p += 1
     return p, int(part)
 
@@ -30,9 +29,7 @@ def decode_list(seq, p):
         v = seq[p]
         assert v in do_map, E_INVSEQ
         p, element = do_map[v](seq, p)
-
         part.append(element)
-
     p += 1
     return p, part
 
@@ -43,17 +40,14 @@ def decode_dict(seq, p):
         v = seq[p]
         assert v.isdigit(), E_INVSEQ
         p, key = decode_str(seq, p)
-
         v = seq[p]
         assert v in do_map, E_INVSEQ
         p, value = do_map[v](seq, p)
-
         part[key] = value
-
     p += 1
     return p, part
 
-# decode_x(p) -> p, x
+# decode_x(seq, p) -> p, x
 do_map = dict()
 for x in range(10):
     do_map[str(x)] = decode_str
@@ -65,10 +59,7 @@ E_INVSEQ = 'Invalid sequence.'
 
 
 if __name__ == '__main__':
-
     with open('/tmp/snis-691.torrent', 'rb') as f:
         seq = f.read().strip('\n')
-
     print bdecode(seq)
-
 
