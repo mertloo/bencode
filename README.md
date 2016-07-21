@@ -1,2 +1,2 @@
 # bencode
-Bencode implementation
+Bencode implementation. (Happy coding.)
