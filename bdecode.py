@@ -57,9 +57,3 @@ do_map['d'] = decode_dict
 
 E_INVSEQ = 'Invalid sequence.'
 
-
-if __name__ == '__main__':
-    with open('/tmp/snis-691.torrent', 'rb') as f:
-        seq = f.read().strip('\n')
-    print bdecode(seq)
-

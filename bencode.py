@@ -36,9 +36,3 @@ do_map[dict] = encode_dict
 E_INVOBJ = 'Invalid object.'
 BEN_TYPE = (str, int, list, dict)
 
-if __name__ == '__main__':
-    with open('/tmp/snis-691.torrent', 'rb') as f:
-        seq = f.read().strip('\n')
-    import bdecode
-    obj = bdecode.bdecode(seq)
-    print bencode(obj) == seq
